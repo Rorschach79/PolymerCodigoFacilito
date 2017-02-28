@@ -1,0 +1,91 @@
+<!--HASTA VIDEO Nº 5-->
+
+<!--HTML imports-->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="./nombre-codigofacilito.html">
+
+<!--
+`hola-codigofacilito`
+Muestra un Hola Mundo
+
+@demo demo/index.html 
+-->
+
+<dom-module id="hola-codigofacilito">
+  <!--HTML Templates-->
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <paper-input label="Name" value="{{name}}"></paper-input>
+    
+    <!-- [[]]-One way binding  {{}}-Two way binding -->
+    <h1 id="title">
+      Hello [[prop1]] from 
+      <nombre-codigofacilito name={{name}}></nombre-codigofacilito>
+      , [[age]] years old
+    </h1 id>
+    <content></content>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'hola-codigofacilito',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'hola-codigofacilito',
+        },
+        name: {
+          type: String,
+          value: 'default'
+        },
+        age: {
+          type: Number
+        }
+      },
+      // CALLBACKS del ciclo de vida de Polymer
+      // 1º
+      created: function() {
+        // Tenemos acceso desde aquí al elemento local y sus propiedades
+        console.log('Element has been created!');
+        console.log(this);
+      },
+      // 2º
+      ready: function() {
+        // Tenemos acceso desde aquí al LOCAL DOM
+        console.log('Element is ready!');
+        console.log(this.$);
+        console.log(this.$.title);
+        // Utilizamos => y no 'function' para que this nos de acceso a todo el elemento y no a la funcion setTimeOut.
+        // setTimeout(()=>{
+        //   this.name = 'a new name';
+        // },2000);
+
+      },
+      // 3º 
+      // Tenemos acceso desde aquí a todo el documento
+      attached: function() {
+        console.log('Element is in the document!');
+
+      },
+      // 4º 
+      // El elemento está fuera del documento
+      detached: function() {
+
+      },
+      // 5º 
+      // Cuando alguno de los atributos QUE NO ES UNA PROPIEDAD p.e: name haya cambiado
+      attributeChanged: function() {
+
+      }
+
+    });
+  </script>
+</dom-module>

@@ -1,0 +1,30 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="nombre-codigofacilito">
+    
+    <template>
+        <span>Mi nombre es {{name}}</span>
+    </template>
+    
+    <script>
+        Polymer({
+
+            is: 'nombre-codigofacilito',
+
+            properties: {
+                name: {
+                    type: String,
+                    value: 'default',
+                    notify: true
+                }
+            },
+            ready: function() {
+                setTimeout(()=>{
+                    this.name = 'a new name from child!';
+                },2000);
+            }
+
+        });
+    </script>
+
+</dom-module>
